@@ -6,7 +6,8 @@ package com.ubs.opsit.interviews;
 public class BerlinClock implements TimeConverter
 {
     @Override
-    public String convertTime(String aTime) {
+    public String convertTime(String aTime)
+    {
         String[] timeInString = aTime.split(":");
         Integer hour = Integer.valueOf(timeInString[0]);
         Integer minute = Integer.valueOf(timeInString[1]);
@@ -18,6 +19,12 @@ public class BerlinClock implements TimeConverter
         int numLightsInThirdRow = calculateLightsOfRow3(minute);
         int numLightsInFourthRow = calculateLightOfRow4(minute);
 
+        String result = resultString(isYellowLightOn, numberOfRedLightsInFirstRow, numberOfRedLightsInSecRow, numLightsInThirdRow, numLightsInFourthRow);
+        return result;
+    }
+
+    private String resultString(boolean isYellowLightOn, int numberOfRedLightsInFirstRow, int numberOfRedLightsInSecRow, int numLightsInThirdRow, int numLightsInFourthRow)
+    {
         String result = "";
         result += printFirstRow(isYellowLightOn);
         result += printSecondRow(numberOfRedLightsInFirstRow);
